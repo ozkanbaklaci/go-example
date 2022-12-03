@@ -1,13 +1,13 @@
 resources:
-- name: golanexample
+- name: go-example
   type: git
   source:
-    uri: https://github.com/ozkanbaklaci/golanexample.git
+    uri: https://github.com/ozkanbaklaci/go-example.git
 
 jobs:
 - name: build
   plan:
-  - get: golanexample
+  - get: go-example
     trigger: true
   - task: task1
     config:
@@ -17,6 +17,6 @@ jobs:
         source:
           repository: golang
       inputs:
-      - name: golanexample
+      - name: go-example
       run:
-        path: golanexample/build.sh
+        path: go-example/build.sh
