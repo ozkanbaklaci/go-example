@@ -1,0 +1,22 @@
+resources:
+- name: golanexample
+  type: git
+  source:
+    uri: https://github.com/ozkanbaklaci/golanexample.git
+
+jobs:
+- name: build
+  plan:
+  - get: golanexample
+    trigger: true
+  - task: task1
+    config:
+      platform: linux
+      image_resource:
+        type: registry-image
+        source:
+          repository: golang
+      inputs:
+      - name: golanexample
+      run:
+        path: golanexample/build.sh
