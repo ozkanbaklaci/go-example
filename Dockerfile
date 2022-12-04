@@ -6,4 +6,4 @@ COPY . .
 RUN go build -o /bin/go-app
 
 ENTRYPOINT ["/bin/go-app"]
-EXPOSE 11131
+EXPOSE 11130
