@@ -1,8 +1,17 @@
+
+MAINTAINER Özkan BAKLACI
 ### Stage 1
-FROM docker:19.03.0-dind
-RUN apk update && apk add curl git
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.1/bin/linux/amd64/kubectl
-RUN chmod u+x kubectl && mv kubectl /bin/kubectl
+FROM ubuntu:18.04
+ENV KUBERNETES_VERSION=v1.25.4
+RUN set -x && \
+    apt-get update && \
+    apt-get install -y jq curl && \
+    # Download and install kubectl
+    [ -z "$KUBERNETES_VERSION" ] && KUBERNETES_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt) ||: && \
+    curl -s -LO https://storage.googleapis.com/kubernetes-release/release/${KUBERNETES_VERSION}/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl && \
+    kubectl version --client 
 
 ### Stage 2
 FROM golang:1.16-alpine AS builder
