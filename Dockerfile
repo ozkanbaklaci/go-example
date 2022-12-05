@@ -1,4 +1,4 @@
-
+MAINTAINER Özkan BAKLACI <baklaciozkan@gmail.com>
 
 ### Stage 1
 FROM ubuntu:18.04
@@ -12,6 +12,8 @@ RUN set -x && \
     chmod +x ./kubectl && \
     mv ./kubectl /usr/local/bin/kubectl && \
     kubectl version --client 
+RUN mkdir -p /opt/resource
+COPY assets/* /opt/resource/
 
 ### Stage 2
 FROM golang:1.16-alpine AS builder
