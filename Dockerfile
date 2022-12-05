@@ -1,5 +1,5 @@
 
-MAINTAINER Özkan BAKLACI
+
 ### Stage 1
 FROM ubuntu:18.04
 ENV KUBERNETES_VERSION=v1.25.4
