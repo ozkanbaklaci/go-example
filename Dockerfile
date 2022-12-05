@@ -1,4 +1,4 @@
-MAINTAINER Özkan BAKLACI <baklaciozkan@gmail.com>
+
 
 ### Stage 1
 FROM ubuntu:18.04
