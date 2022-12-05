@@ -1,13 +1,9 @@
-### Stage 1
 FROM golang:1.16-alpine AS builder
 
 WORKDIR /app
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w" -o /app/go-app
-
-RUN apk add upx
-RUN upx --ultra-brute /app/go-app
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w" -o /app/blog-app
 
 ### Stage 2
 FROM scratch
