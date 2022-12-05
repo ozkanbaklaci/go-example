@@ -14,7 +14,7 @@ RUN upx --ultra-brute /bin/go-app
 
 ### Stage 3
 FROM scratch
-COPY --from=builder /app/blog-app /bin/blog-app
+COPY --from=builder /bin/go-app /bin/go-app
 ENTRYPOINT ["/bin/go-app"]
 EXPOSE 11130
 
