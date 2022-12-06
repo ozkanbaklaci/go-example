@@ -1,8 +1,8 @@
 #!/bin/bash
  
 
-export GOPATH=$PWD/gopath
-export PATH=$PWD/gopath/bin:$PATH
+export GOPATH=$PWD/golangapp
+export PATH=$PWD/golangapp/bin:$PATH
  
 cd go-example
 
