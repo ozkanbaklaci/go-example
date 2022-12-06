@@ -1,7 +1,7 @@
 #!/bin/bash
 
-export GOPATH=$PWD/go-example
-export PATH=$PWD/go-example/bin:$PATH
+export GOPATH=$PWD/gopath
+export PATH=$PWD/gopath/bin:$PATH
 cd go-example
 
 echo "Building..."
