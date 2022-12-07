@@ -12,6 +12,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", Hello)
         r.HandleFunc("/health", HealthCheckHandler)
+	http.Handle("/", r)
 
 	fmt.Println("Starting up on 11130")
 	log.Fatal(http.ListenAndServe(":11130", nil))
