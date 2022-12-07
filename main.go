@@ -5,16 +5,28 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
+	"io"
 )
 
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", Hello)
-	http.Handle("/", r)
+        r.HandleFunc("/health", HealthCheckHandler)
+
 	fmt.Println("Starting up on 11130")
 	log.Fatal(http.ListenAndServe(":11130", nil))
 }
 
 func Hello(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintln(w, "Hello Ziraat Team from Özkan")
+}
+
+func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
+    // A very simple health check.
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+
+    // In the future we could report back on the status of our DB, or our cache
+    // (e.g. Redis) by performing a simple PING, and include them in the response.
+    io.WriteString(w, `{"alive": true}`)
 }
