@@ -19,7 +19,7 @@ func main() {
 }
 
 func Hello(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintln(w, "Hello Ziraat Team from Özkan")
+	fmt.Fprintln(w, "Hello Ziraat Team from Özkan 2")
 }
 
 func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
