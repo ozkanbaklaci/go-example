@@ -1,11 +1,11 @@
 # go-example
 
-Build go build main.go
+Build ./build.sh
 
-Run ./main
+Test ./go-test.sh
 
-Test go test
+Docker Build
+sudo docker build -t go .
 
-Docker Build sudo docker build -t go .
-
-Docker Run sudo docker run -p 11130:11130 go
+Docker Run 
+sudo docker run -p 11130:11130 go
